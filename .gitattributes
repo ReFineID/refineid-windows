@@ -1,0 +1,13 @@
+# Line endings are LF in the repository and on every checkout, so the
+# formatters (CSharpier, rustfmt) see identical bytes on Windows, macOS, and
+# Linux. Without this a Windows checkout converts text to CRLF and CSharpier
+# rejects every file for a line-ending mismatch.
+* text=auto eol=lf
+
+# Binary assets: never line-ending normalized.
+*.png binary
+*.ico binary
+*.dll binary
+*.pdb binary
+*.p12 binary
+*.pfx binary

@@ -1,0 +1,6 @@
+# CSharpier formats every language it supports here: C#, XAML, and the MSBuild
+# project files. Only build output and Rust's own tree (rustfmt owns that) are
+# excluded.
+**/obj/
+**/bin/
+**/target/

@@ -1,0 +1,108 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows10.0.26100.0</TargetFramework>
+    <TargetPlatformMinVersion>10.0.22000.0</TargetPlatformMinVersion>
+    <RootNamespace>ReFineID</RootNamespace>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <!-- Embeds the icon in the executable so Explorer, the taskbar, and
+         Alt+Tab show it; AppWindow.SetIcon uses the same file at runtime. -->
+    <ApplicationIcon>Assets\AppIcon.ico</ApplicationIcon>
+    <Platforms>x64;arm64</Platforms>
+    <RuntimeIdentifier Condition="'$(RuntimeIdentifier)' == '' and '$(Platform)' == 'arm64'"
+      >win-arm64</RuntimeIdentifier>
+    <RuntimeIdentifier Condition="'$(RuntimeIdentifier)' == ''">win-x64</RuntimeIdentifier>
+    <UseWinUI>true</UseWinUI>
+    <WinUISDKReferences>false</WinUISDKReferences>
+    <EnableMsixTooling>true</EnableMsixTooling>
+    <WindowsPackageType Condition="'$(Configuration)' == 'Debug'">None</WindowsPackageType>
+    <EnableMsixTooling Condition="'$(Configuration)' == 'Debug'">false</EnableMsixTooling>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <!-- Strictness: every analyzer at its latest rules, warnings are errors,
+         and code style is enforced at build. Generated XAML/interop code is
+         skipped by the analyzers' generated-code convention. -->
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <CodeAnalysisTreatWarningsAsErrors>true</CodeAnalysisTreatWarningsAsErrors>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <AnalysisLevel>latest-all</AnalysisLevel>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <Deterministic>true</Deterministic>
+    <!-- The single source of the CalVer YY.M.D.B version is the repository
+         VERSION file, stamped by script/version-stamp.ps1. All three managed
+         version fields are stamped from it: <Version> alone only sets the
+         informational version, while Assembly.GetName().Version (shown in the
+         footer) reads AssemblyVersion, which otherwise falls back to the SDK
+         default and renders as 0.0.0.0. -->
+    <RefineIdVersion>$([System.IO.File]::ReadAllText('$(MSBuildProjectDirectory)\..\..\VERSION').Trim())</RefineIdVersion>
+    <Version>$(RefineIdVersion)</Version>
+    <AssemblyVersion>$(RefineIdVersion)</AssemblyVersion>
+    <FileVersion>$(RefineIdVersion)</FileVersion>
+    <RustCargo Condition="Exists('$(USERPROFILE)\.cargo\bin\cargo.exe')"
+      >$(USERPROFILE)\.cargo\bin\cargo.exe</RustCargo>
+    <RustCargo Condition="'$(RustCargo)' == ''">cargo</RustCargo>
+    <RustProfile Condition="'$(Configuration)' == 'Release'">release</RustProfile>
+    <RustProfile Condition="'$(RustProfile)' == ''">debug</RustProfile>
+    <RustReleaseArgument Condition="'$(Configuration)' == 'Release'">--release</RustReleaseArgument>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\SplashScreen.scale-200.png" />
+    <Content Include="Assets\LockScreenLogo.scale-200.png" />
+    <Content Include="Assets\Square150x150Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-48_altform-lightunplated.png" />
+    <Content Include="Assets\StoreLogo.png" />
+    <Content Include="Assets\AppIcon.ico" />
+    <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Manifest Include="$(ApplicationManifest)" />
+    <Content
+      Include="..\..\target\$(RustProfile)\refineid_rapp_ffi.dll"
+      Link="refineid_rapp_ffi.dll"
+      CopyToOutputDirectory="PreserveNewest"
+    />
+    <Content
+      Include="..\..\target\$(RustProfile)\refineid_settings_ffi.dll"
+      Link="refineid_settings_ffi.dll"
+      CopyToOutputDirectory="PreserveNewest"
+    />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(DisableMsixProjectCapabilityAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
+    <ProjectCapability Include="Msix" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.28000.2526" />
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools.WinApp" Version="0.5.0" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="2.3.1" />
+    <PackageReference
+      Include="CommunityToolkit.WinUI.Controls.SettingsControls"
+      Version="8.2.250402"
+    />
+    <PackageReference Include="QRCoder" Version="1.6.0" />
+  </ItemGroup>
+
+  <PropertyGroup Condition="'$(DisableHasPackageAndPublishMenuAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
+    <HasPackageAndPublishMenu>true</HasPackageAndPublishMenu>
+  </PropertyGroup>
+
+  <!-- Builds the Rust bridges before the C# build. A machine that
+       already has the cdylib next to the workspace target can skip this with
+       -p:SkipRustBuild=true. -->
+  <Target
+    Name="BuildRustRappBridge"
+    BeforeTargets="PrepareForBuild"
+    Condition="'$(SkipRustBuild)' != 'true'"
+  >
+    <Exec
+      Command="&quot;$(RustCargo)&quot; build -p refineid-rapp-ffi -p refineid-settings-ffi $(RustReleaseArgument)"
+      WorkingDirectory="$(MSBuildProjectDirectory)\..\.."
+    />
+  </Target>
+</Project>

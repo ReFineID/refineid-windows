@@ -1,0 +1,33 @@
+#!/bin/sh
+# ReFineID Windows commit gate.
+#
+# Rejects a commit that would fail the CI quality gate in .github/workflows/ci.yml.
+# Enable it once per clone with:
+#
+#     git config core.hooksPath .githooks
+#
+# Formatting, clippy lints (both host and Windows cross-target), and unit tests
+# run on commit so that bad quality code is caught before pushing to GitHub.
+# Bypass in a genuine emergency with `git commit --no-verify`.
+
+set -e
+
+echo "pre-commit: cargo fmt --all --check"
+cargo fmt --all --check
+
+echo "pre-commit: dotnet csharpier check"
+dotnet tool restore >/dev/null
+dotnet csharpier check .
+
+echo "pre-commit: cargo clippy (native host)"
+cargo clippy --workspace --all-targets -- -D warnings
+
+if rustup target list --installed | grep -q "x86_64-pc-windows-msvc"; then
+    echo "pre-commit: cargo clippy (x86_64-pc-windows-msvc)"
+    cargo clippy --target x86_64-pc-windows-msvc --workspace --all-targets -- -D warnings
+fi
+
+echo "pre-commit: cargo test -p refineid-lib-core"
+cargo test -p refineid-lib-core
+
+echo "pre-commit: ok (all quality checks passed)"

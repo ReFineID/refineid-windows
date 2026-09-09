@@ -1,0 +1,29 @@
+[package]
+name = "refineid-pkcs11"
+description = "PKCS#11 v2.40 cryptoki module for FINEID -- a minimal read-only, sign-only cdylib exposing the card's authentication certificate + private key for Firefox / NSS client-certificate TLS. Sibling to the Windows minidriver; card-edge logic is shared with refineid-lib-core."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+rust-version.workspace = true
+publish = false
+
+[features]
+default = []
+pin-change = []
+test-pin-env = []
+
+[lints]
+workspace = true
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+name = "refineid_pkcs11"
+
+[dependencies]
+refineid-lib-core.workspace = true
+refineid-lib-pcsc.workspace = true
+refineid-rapp-core.workspace = true
+refineid-windows-credential-store.workspace = true
+hex.workspace = true

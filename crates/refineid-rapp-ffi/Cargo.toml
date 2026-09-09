@@ -1,0 +1,24 @@
+[package]
+name = "refineid-rapp-ffi"
+description = "Narrow C ABI between the native Windows UI and the safe RAPP requester"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+rust-version.workspace = true
+publish = false
+
+[lints]
+workspace = true
+
+[lib]
+crate-type = ["cdylib"]
+name = "refineid_rapp_ffi"
+
+[dependencies]
+refineid-rapp-core.workspace = true
+refineid-windows-credential-store.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+hex.workspace = true

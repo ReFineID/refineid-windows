@@ -1,0 +1,116 @@
+[workspace]
+resolver = "3"
+members = [
+    "crates/refineid-card-manager-core",
+    "crates/refineid-lib-core",
+    "crates/refineid-lib-pcsc",
+    "crates/refineid-minidriver",
+    "crates/refineid-msi",
+    "crates/refineid-pkcs11",
+    "crates/refineid-rapp-cli",
+    "crates/refineid-rapp-core",
+    "crates/refineid-rapp-ffi",
+    "crates/refineid-settings-ffi",
+    "crates/refineid-windows-credential-store",
+]
+
+[workspace.package]
+version = "26.9.8"
+edition = "2024"
+license = "Apache-2.0"
+authors = ["ReFineID contributors"]
+repository = "https://github.com/ReFineID/ReFineID-Windows"
+rust-version = "1.91"
+
+[workspace.dependencies]
+refineid-lib-core = { path = "crates/refineid-lib-core", version = "26" }
+refineid-lib-pcsc = { path = "crates/refineid-lib-pcsc", version = "26" }
+refineid-card-manager-core = { path = "crates/refineid-card-manager-core", version = "26" }
+refineid-rapp-core = { path = "crates/refineid-rapp-core", version = "26" }
+refineid-windows-credential-store = { path = "crates/refineid-windows-credential-store", version = "26" }
+
+refineid-apdu = { git = "https://github.com/ReFineID/refineid-core.git", branch = "main" }
+refineid-atr = { git = "https://github.com/ReFineID/refineid-core.git", branch = "main" }
+refineid-auth = { git = "https://github.com/ReFineID/refineid-core.git", branch = "main" }
+refineid-ber = { git = "https://github.com/ReFineID/refineid-core.git", branch = "main" }
+refineid-cms = { git = "https://github.com/ReFineID/refineid-core.git", branch = "main" }
+refineid-digest = { git = "https://github.com/ReFineID/refineid-core.git", branch = "main" }
+refineid-emrtd = { git = "https://github.com/ReFineID/refineid-core.git", branch = "main" }
+refineid-pace = { git = "https://github.com/ReFineID/refineid-core.git", branch = "main" }
+refineid-pin-cache = { git = "https://github.com/ReFineID/refineid-core.git", branch = "main" }
+refineid-pkcs15 = { git = "https://github.com/ReFineID/refineid-core.git", branch = "main" }
+refineid-rapp = { git = "https://github.com/ReFineID/refineid-core.git", branch = "main" }
+refineid-remote = { git = "https://github.com/ReFineID/refineid-core.git", branch = "main" }
+refineid-sign = { git = "https://github.com/ReFineID/refineid-core.git", branch = "main" }
+refineid-x509 = { git = "https://github.com/ReFineID/refineid-core.git", branch = "main" }
+
+aes = "0.9"
+cbc = "0.2"
+cmac = "0.8"
+const-oid = { version = "0.10", default-features = false }
+crypto-bigint = { version = "0.7", features = ["alloc", "zeroize"] }
+getrandom = "0.4"
+hex = "0.4"
+# Terminal QR rendering for the RAPP pairing offer in the requester CLI.
+# Pure Rust; the image and SVG render features stay off.
+qrcode = { version = "0.14", default-features = false }
+hmac = "0.13"
+pcsc = "2.9"
+pkcs1 = "0.7"
+proptest = "1"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+serde_yaml = "0.9"
+sha1 = "0.11"
+sha2 = "0.11"
+spki = "0.7"
+subtle = "2"
+zeroize = { version = "1", features = ["zeroize_derive"] }
+windows-sys = { version = "0.61.2", features = [
+    "Win32_Foundation",
+    "Win32_System_ApplicationInstallationAndServicing",
+    "Win32_Security_Credentials",
+] }
+
+[workspace.lints.rust]
+meta_variable_misuse = "warn"
+missing_copy_implementations = "warn"
+missing_debug_implementations = "warn"
+missing_docs = "warn"
+rust_2018_idioms = { level = "warn", priority = -1 }
+single_use_lifetimes = "warn"
+trivial_numeric_casts = "warn"
+unsafe_code = "deny"
+unused_import_braces = "warn"
+unused_lifetimes = "warn"
+unused_qualifications = "warn"
+variant_size_differences = "warn"
+
+[workspace.lints.rustdoc]
+bare_urls = "deny"
+broken_intra_doc_links = "deny"
+invalid_codeblock_attributes = "deny"
+invalid_html_tags = "deny"
+invalid_rust_codeblocks = "deny"
+missing_crate_level_docs = "deny"
+private_intra_doc_links = "deny"
+redundant_explicit_links = "deny"
+
+[workspace.lints.clippy]
+allow_attributes_without_reason = "deny"
+enum_glob_use = "deny"
+nursery = { level = "warn", priority = -1 }
+pedantic = { level = "warn", priority = -1 }
+unwrap_used = "deny"
+
+[profile.release]
+opt-level = 3
+lto = "fat"
+codegen-units = 1
+strip = "symbols"
+overflow-checks = true
+panic = "abort"
+debug = false
+
+
+

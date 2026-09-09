@@ -1,0 +1,35 @@
+version: 2
+updates:
+  - package-ecosystem: cargo
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      # RustCrypto's encoding crates share types across their public
+      # interfaces, so a major release moves the whole set at once.
+      # Proposed one at a time they cannot compile, and merging one alone
+      # would link two incompatible copies of der into a DLL that parses
+      # certificates. Group them so a bump arrives as a single reviewable
+      # change.
+      rustcrypto-formats:
+        patterns:
+          - const-oid
+          - der
+          - pkcs1
+          - spki
+          - x509-cert
+          - x509-ocsp
+      # Likewise for the trait crates the digests and ciphers build on.
+      rustcrypto-traits:
+        patterns:
+          - aes
+          - cbc
+          - cmac
+          - crypto-bigint
+          - hmac
+          - sha1
+          - sha2
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly

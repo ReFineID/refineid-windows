@@ -1,0 +1,43 @@
+# ReFineID Windows editor and analyzer configuration.
+#
+# Formatting is owned by dedicated tools: CSharpier for C# and rustfmt for
+# Rust, both checked by the pre-commit hook and CI. The build's own whitespace
+# analyzer (IDE0055) would only fight CSharpier, so it is turned off below while
+# every other analyzer stays on. Rules are scoped per file type so a protocol
+# fixture's exact bytes are never touched.
+
+root = true
+
+[*.cs]
+indent_style = space
+indent_size = 4
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+# CSharpier owns C# formatting; do not let the in-build formatter contradict it.
+dotnet_diagnostic.IDE0055.severity = none
+
+[*.rs]
+indent_style = space
+indent_size = 4
+charset = utf-8
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.{csproj,props,targets,manifest,appxmanifest}]
+indent_style = space
+indent_size = 2
+end_of_line = lf
+
+[*.xaml]
+indent_style = space
+indent_size = 4
+end_of_line = lf
+
+[*.{json,yml,yaml,md}]
+indent_style = space
+indent_size = 2
+
+[*.{ps1,psm1}]
+indent_style = space
+indent_size = 4

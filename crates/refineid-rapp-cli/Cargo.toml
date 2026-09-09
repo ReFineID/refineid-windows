@@ -1,0 +1,27 @@
+[package]
+name = "refineid-rapp-cli"
+description = "Development requester CLI for the RAPP remote-card path"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+rust-version.workspace = true
+
+[[bin]]
+name = "refineid-rapp"
+path = "src/main.rs"
+
+[dependencies]
+hex.workspace = true
+p384 = { version = "0.13", default-features = false, features = ["ecdsa"] }
+qrcode.workspace = true
+refineid-rapp-core.workspace = true
+refineid-windows-credential-store.workspace = true
+zeroize.workspace = true
+
+[dev-dependencies]
+refineid-lib-core.workspace = true
+
+[lints]
+workspace = true

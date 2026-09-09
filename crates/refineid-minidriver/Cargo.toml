@@ -1,0 +1,26 @@
+[package]
+name = "refineid-minidriver"
+description = "Windows smart-card minidriver for FINEID -- a Card Module hooking the card into the Microsoft Base CSP/KSP, so Edge / Chrome / Schannel / .NET / VPN / RDP / Wi-Fi EAP-TLS reach it via the OS smart-card stack. Sibling to the PKCS#11 adapter. Windows-only; empty on other targets."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+rust-version.workspace = true
+publish = false
+
+[lints]
+workspace = true
+
+[lib]
+crate-type = ["cdylib"]
+name = "refineid_minidriver"
+
+# All real code is `#[cfg(windows)]`; on other targets the crate is
+# intentionally empty (keeps the cross-platform workspace build green).
+# Dependencies are gated to windows so a non-windows build declares
+# none (satisfies `unused_crate_dependencies`).
+[target.'cfg(windows)'.dependencies]
+refineid-lib-core.workspace = true
+refineid-rapp-core.workspace = true
+refineid-windows-credential-store.workspace = true
