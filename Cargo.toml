@@ -19,7 +19,7 @@ version = "26.9.8"
 edition = "2024"
 license = "Apache-2.0"
 authors = ["Petri Koistinen"]
-repository = "https://github.com/ReFineID/ReFineID-Windows"
+repository = "https://github.com/refineid/refineid-windows"
 rust-version = "1.91"
 
 [workspace.dependencies]
@@ -29,20 +29,20 @@ refineid-card-manager-core = { path = "crates/refineid-card-manager-core", versi
 refineid-rapp-core = { path = "crates/refineid-rapp-core", version = "26" }
 refineid-windows-credential-store = { path = "crates/refineid-windows-credential-store", version = "26" }
 
-refineid-apdu = { git = "https://github.com/ReFineID/refineid-core.git", branch = "main" }
-refineid-atr = { git = "https://github.com/ReFineID/refineid-core.git", branch = "main" }
-refineid-auth = { git = "https://github.com/ReFineID/refineid-core.git", branch = "main" }
-refineid-ber = { git = "https://github.com/ReFineID/refineid-core.git", branch = "main" }
-refineid-cms = { git = "https://github.com/ReFineID/refineid-core.git", branch = "main" }
-refineid-digest = { git = "https://github.com/ReFineID/refineid-core.git", branch = "main" }
-refineid-emrtd = { git = "https://github.com/ReFineID/refineid-core.git", branch = "main" }
-refineid-pace = { git = "https://github.com/ReFineID/refineid-core.git", branch = "main" }
-refineid-pin-cache = { git = "https://github.com/ReFineID/refineid-core.git", branch = "main" }
-refineid-pkcs15 = { git = "https://github.com/ReFineID/refineid-core.git", branch = "main" }
-refineid-rapp = { git = "https://github.com/ReFineID/refineid-core.git", branch = "main" }
-refineid-remote = { git = "https://github.com/ReFineID/refineid-core.git", branch = "main" }
-refineid-sign = { git = "https://github.com/ReFineID/refineid-core.git", branch = "main" }
-refineid-x509 = { git = "https://github.com/ReFineID/refineid-core.git", branch = "main" }
+refineid-apdu = { git = "https://github.com/refineid/refineid-core.git", branch = "main" }
+refineid-atr = { git = "https://github.com/refineid/refineid-core.git", branch = "main" }
+refineid-auth = { git = "https://github.com/refineid/refineid-core.git", branch = "main" }
+refineid-ber = { git = "https://github.com/refineid/refineid-core.git", branch = "main" }
+refineid-cms = { git = "https://github.com/refineid/refineid-core.git", branch = "main" }
+refineid-digest = { git = "https://github.com/refineid/refineid-core.git", branch = "main" }
+refineid-emrtd = { git = "https://github.com/refineid/refineid-core.git", branch = "main" }
+refineid-pace = { git = "https://github.com/refineid/refineid-core.git", branch = "main" }
+refineid-pin-cache = { git = "https://github.com/refineid/refineid-core.git", branch = "main" }
+refineid-pkcs15 = { git = "https://github.com/refineid/refineid-core.git", branch = "main" }
+refineid-rapp = { git = "https://github.com/refineid/refineid-core.git", branch = "main" }
+refineid-remote = { git = "https://github.com/refineid/refineid-core.git", branch = "main" }
+refineid-sign = { git = "https://github.com/refineid/refineid-core.git", branch = "main" }
+refineid-x509 = { git = "https://github.com/refineid/refineid-core.git", branch = "main" }
 
 aes = "0.9"
 cbc = "0.2"
