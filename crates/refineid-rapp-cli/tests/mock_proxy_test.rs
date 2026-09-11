@@ -246,7 +246,7 @@ fn test_mock_proxy_pairing_and_card_operations() {
             .as_bytes(),
     )
     .expect("verifying key");
-    let p384_sig = p384::ecdsa::Signature::from_bytes((&sig[..]).into()).expect("parse sig");
+    let p384_sig = p384::ecdsa::Signature::from_slice(&sig).expect("parse sig");
     verifying_key
         .verify_prehash(&digest, &p384_sig)
         .expect("signature must verify against cert pubkey");
