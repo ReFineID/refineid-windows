@@ -50,6 +50,7 @@ internal sealed partial class MainPage : Page
     private readonly DispatcherQueue dispatcher;
     private readonly DispatcherTimer cardPollTimer;
     private string? remoteHolder;
+    private string? selectedReader;
 
     public MainPage()
     {
@@ -266,6 +267,10 @@ internal sealed partial class MainPage : Page
                 targetReader = readers.FirstOrDefault(r =>
                     string.Equals(r, this.selectedReader, StringComparison.Ordinal)
                 );
+                if (targetReader is null)
+                {
+                    this.selectedReader = null;
+                }
             }
 
             if (targetReader is null && readers.Count > 0)
@@ -284,6 +289,7 @@ internal sealed partial class MainPage : Page
                     .ConfigureAwait(true);
                 if (snapshot is not null)
                 {
+                    this.selectedReader = targetReader;
                     this.UpdateLocalCardUi(snapshot);
                     return;
                 }
