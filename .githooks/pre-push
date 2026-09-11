@@ -1,0 +1,23 @@
+#!/bin/sh
+# ReFineID Windows push gate.
+#
+# Rejects a push if git dependencies in Cargo.lock are stale compared
+# to upstream refineid-core.
+#
+# Enable local hooks once per clone with:
+#
+#     git config core.hooksPath .githooks
+
+set -eu
+
+echo "pre-push: checking git dependencies in Cargo.lock"
+
+OUTPUT=$(cargo update -p refineid-remote --dry-run 2>&1)
+
+if echo "$OUTPUT" | grep -q "Updating refineid-"; then
+    echo "pre-push: error: Cargo.lock has stale git dependencies from refineid-core."
+    echo "pre-push: run 'cargo update -p refineid-remote' and commit the updated Cargo.lock."
+    exit 1
+fi
+
+echo "pre-push: ok (git dependencies are up to date)"
