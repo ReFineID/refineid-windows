@@ -8,7 +8,6 @@
 #
 # Formatting, clippy lints (both host and Windows cross-target), and unit tests
 # run on commit so that bad quality code is caught before pushing to GitHub.
-# Bypass in a genuine emergency with `git commit --no-verify`.
 
 set -e
 

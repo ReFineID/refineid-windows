@@ -19,24 +19,31 @@ XAML, and the project files. CSharpier is pinned in `.config/dotnet-tools.json`
 and its style is fixed, so `dotnet csharpier format .` fixes any formatting the
 check reports.
 
-## Commit gate
+## Commit and push gates
 
-`.github/workflows/ci.yml` is the authoritative push gate: it runs formatting,
+`.github/workflows/ci.yml` is the authoritative quality gate: it runs formatting,
 lint, tests, and the requester build on a Windows runner, and `main` is
 protected so nothing merges until it passes.
 
-Enable the local pre-commit hook once per clone so a badly formatted change is
-caught before it leaves the machine:
+Enable the local hooks once per clone so defects and stale dependencies are
+caught before leaving the machine:
 
 ```sh
 git config core.hooksPath .githooks
 ```
 
-The pre-commit hook runs on every host to catch defects locally before
-pushing: `cargo fmt`, `dotnet csharpier check`, `cargo clippy` (both native
-host and `x86_64-pc-windows-msvc` for Windows-specific crates), and core
-unit tests (`cargo test -p refineid-lib-core`). CI then validates the full
-suite on Windows runners before merging.
+The hooks enforce standards locally:
+
+- **Pre-commit (`.githooks/pre-commit`)**: runs on every host to catch defects before
+  committing: `cargo fmt`, `dotnet csharpier check`, `cargo clippy` (both native
+  host and `x86_64-pc-windows-msvc` for Windows-specific crates), and core
+  unit tests (`cargo test -p refineid-lib-core`).
+- **Pre-push (`.githooks/pre-push`)**: verifies that Git dependencies in `Cargo.lock`
+  (such as `refineid-core`) are synchronized with the latest upstream revisions
+  before pushing. Run `cargo update -p refineid-remote` when stale.
+- **Commit message (`.githooks/commit-msg`)**: enforces that commit messages do not
+  contain forbidden trailers (such as AI attribution). CI then validates the full
+  suite on Windows runners before merging.
 
 Rules:
 
