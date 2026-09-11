@@ -18,7 +18,7 @@ members = [
 version = "26.9.8"
 edition = "2024"
 license = "Apache-2.0"
-authors = ["ReFineID contributors"]
+authors = ["Petri Koistinen"]
 repository = "https://github.com/ReFineID/ReFineID-Windows"
 rust-version = "1.91"
 
