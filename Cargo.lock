@@ -852,8 +852,8 @@ dependencies = [
 
 [[package]]
 name = "refineid-digest"
-version = "26.9.11"
-source = "git+https://github.com/refineid/refineid-core.git?branch=main#20fe5500b3b87964b5dcd0c054be2ea38b6a2120"
+version = "26.9.12"
+source = "git+https://github.com/refineid/refineid-core.git?branch=main#c3b9faea07686df0b4c6bc002907efa5d510f1d7"
 dependencies = [
  "sha1",
  "sha2 0.11.0",
@@ -920,8 +920,8 @@ dependencies = [
 
 [[package]]
 name = "refineid-rapp"
-version = "26.9.11"
-source = "git+https://github.com/refineid/refineid-core.git?branch=main#20fe5500b3b87964b5dcd0c054be2ea38b6a2120"
+version = "26.9.12"
+source = "git+https://github.com/refineid/refineid-core.git?branch=main#c3b9faea07686df0b4c6bc002907efa5d510f1d7"
 dependencies = [
  "sha2 0.11.0",
  "snow",
@@ -969,8 +969,8 @@ dependencies = [
 
 [[package]]
 name = "refineid-remote"
-version = "26.9.11"
-source = "git+https://github.com/refineid/refineid-core.git?branch=main#20fe5500b3b87964b5dcd0c054be2ea38b6a2120"
+version = "26.9.12"
+source = "git+https://github.com/refineid/refineid-core.git?branch=main#c3b9faea07686df0b4c6bc002907efa5d510f1d7"
 dependencies = [
  "refineid-digest",
 ]
