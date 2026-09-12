@@ -18,3 +18,18 @@
 - Verify claims from Microsoft, DVV, ICAO, eIDAS, or another primary source.
 - Always run formatting (`cargo fmt`, `csharpier`), clippy (`-D warnings` on both host and Windows targets), and unit tests before committing (`.githooks/pre-commit` enforces this). Keep `Cargo.lock` Git dependencies synchronized with upstream (`.githooks/pre-push` enforces this). Never bypass verification with `--no-verify`. Hardware claims additionally require a real reader and card.
 - Do not publish unsigned or test-signed binaries as production releases.
+
+## Source comments
+
+- Comments explain what the code does now and the constraints it honors.
+  Past bugs, previous implementations, and explanations of what a fix changed
+  belong in commit messages, not source comments.
+
+## Commits and integration
+
+- Commits are cheap backups. Make small, focused commits often, without
+  asking for permission, once the required commit checks pass.
+- Complete the integration without waiting for another instruction: push
+  the task branch, open a pull request, and merge it into `main` once the
+  required checks pass. Sync local `main` with the merged remote.
+  Use merge commits to preserve the branch history; do not squash it.
