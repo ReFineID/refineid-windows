@@ -1,7 +1,7 @@
 //! Mock authorization proxy for RAPP automated verification and testing.
 //!
 //! Connects to a RAPP requester (such as `refineid-rapp pair-demo` or the
-//! `ReFineID` Windows Settings app), performs `Noise_XXpsk3` pairing with a
+//! `RefineID` Windows Settings app), performs `Noise_XXpsk3` pairing with a
 //! 6-digit numeric pairing code or pairing offer URI, and serves typed card
 //! operations (inspection, identity, certificate, and authentication).
 
@@ -103,7 +103,7 @@ impl Default for MockProxyOptions {
             code: None,
             uri: None,
             candidate_id: DEFAULT_CANDIDATE_ID.to_owned(),
-            name: "ReFineID Mock Phone".to_owned(),
+            name: "RefineID Mock Phone".to_owned(),
             platform: "iOS".to_owned(),
             count: 1,
             identity_name: "TESTI TESTAAJA".to_owned(),

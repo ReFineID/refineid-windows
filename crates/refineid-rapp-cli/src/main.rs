@@ -116,7 +116,7 @@ struct DemoOptions {
 fn parse_options(arguments: &[String]) -> Result<DemoOptions, String> {
     let mut listen = None;
     let mut advertise = Vec::new();
-    let mut name = "ReFineID Windows".to_owned();
+    let mut name = "RefineID Windows".to_owned();
     let mut code = None;
     let mut auto_confirm = false;
     let mut count = None;
@@ -284,7 +284,7 @@ fn run_pair_demo<S: PairingStore>(options: &DemoOptions, store: S) -> Result<(),
         "{}",
         qr.render::<qrcode::render::unicode::Dense1x2>().build()
     );
-    println!("scan with ReFineID on the iPhone; the offer expires in three minutes");
+    println!("scan with RefineID on the iPhone; the offer expires in three minutes");
     println!("pairing code: {pairing_code}");
     println!();
     println!("offer text (the QR encodes exactly this):");
@@ -884,7 +884,7 @@ fn setup_mock_pairing(arguments: &[String]) -> Result<(), String> {
 
     let mut requester = Requester::new(
         RequesterConfig {
-            display_name: "ReFineID Windows".into(),
+            display_name: "RefineID Windows".into(),
             platform: "Windows".into(),
         },
         store,
@@ -939,7 +939,7 @@ fn setup_mock_pairing(arguments: &[String]) -> Result<(), String> {
 fn clear_pairing() -> Result<(), String> {
     refineid_windows_credential_store::delete_pairing_set()
         .map_err(|e| format!("failed to clear pairing: {e:?}"))?;
-    println!("Deleted ReFineID pairing set from Windows Credential Store.");
+    println!("Deleted RefineID pairing set from Windows Credential Store.");
     Ok(())
 }
 

@@ -49,9 +49,9 @@ pub use pairing::{CredentialPairingStore, delete_pairing_set};
 #[cfg(any(windows, test))]
 const MAX_ATR_BYTES: usize = 64;
 
-/// Prefix reserved for `ReFineID` generic credentials.
+/// Prefix reserved for `RefineID` generic credentials.
 #[cfg(any(windows, test))]
-const TARGET_PREFIX: &str = "ReFineID_NFC_ATR_";
+const TARGET_PREFIX: &str = "RefineID_NFC_ATR_";
 
 /// A Windows Credential Manager failure.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]

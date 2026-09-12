@@ -12,7 +12,7 @@
 // implied. See the License for the specific language governing
 // permissions and limitations under the License.
 
-//! Narrow C ABI for the `ReFineID` Windows settings application.
+//! Narrow C ABI for the `RefineID` Windows settings application.
 //!
 //! Raw pointers end in this crate. Reader names and card serials are copied
 //! into owned Rust strings before use. Credential buffers are copied once
@@ -281,7 +281,7 @@ pub unsafe extern "C" fn refineid_settings_inspect(
 
 /// Prove and enable contactless access with the selected reader and printed CAN.
 ///
-/// This follows the current `ReFineID-Apple` APDU order: SELECT MF, PACE,
+/// This follows the current `RefineID-Apple` APDU order: SELECT MF, PACE,
 /// then protected PKCS #15 reads. Only after that proof succeeds is the CAN
 /// saved in this Windows user's Credential Manager for the Card Module. It
 /// sends no PIN-bearing command.

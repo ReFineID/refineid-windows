@@ -157,7 +157,7 @@ foreach ($arch in $Architecture) {
         Invoke-Signing $signTool $dll
     }
 
-    $msi = Join-Path $OutputDirectory "ReFineID.CardDriver-$productVersion-$arch.msi"
+    $msi = Join-Path $OutputDirectory "RefineID.CardDriver-$productVersion-$arch.msi"
     Write-Host "Packaging $msi"
     & cargo run --quiet --package refineid-msi -- `
         --architecture $arch `

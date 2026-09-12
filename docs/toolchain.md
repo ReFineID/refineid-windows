@@ -1,6 +1,6 @@
 # Toolchain
 
-ReFineID for Windows is Rust (the Card Module and the requester bridge) and C#
+RefineID for Windows is Rust (the Card Module and the requester bridge) and C#
 (the WinUI apps). This collects the toolchain details beyond the quick build in
 the [README](../README.md).
 

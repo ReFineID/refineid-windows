@@ -1,4 +1,4 @@
-# ReFineID Windows agent rules
+# RefineID Windows agent rules
 
 - Source and project prose may use the ISO-8859-15 character repertoire,
   including meaningful specification symbols such as `§`; do not degrade them

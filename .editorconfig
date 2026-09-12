@@ -1,4 +1,4 @@
-# ReFineID Windows editor and analyzer configuration.
+# RefineID Windows editor and analyzer configuration.
 #
 # Formatting is owned by dedicated tools: CSharpier for C# and rustfmt for
 # Rust, both checked by the pre-commit hook and CI. The build's own whitespace

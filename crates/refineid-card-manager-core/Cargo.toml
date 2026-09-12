@@ -1,6 +1,6 @@
 [package]
 name = "refineid-card-manager-core"
-description = "Safe Rust card-management service for the native ReFineID Windows settings app"
+description = "Safe Rust card-management service for the native RefineID Windows settings app"
 version.workspace = true
 edition.workspace = true
 license.workspace = true

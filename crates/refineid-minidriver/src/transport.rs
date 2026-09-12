@@ -312,7 +312,7 @@ impl RemoteCardTransport {
         let _ = store.insert(self.pairing_record.clone());
         let mut requester = Requester::new(
             RequesterConfig {
-                display_name: "ReFineID Windows Remote Arm".into(),
+                display_name: "RefineID Windows Remote Arm".into(),
                 platform: "Windows".into(),
             },
             store,

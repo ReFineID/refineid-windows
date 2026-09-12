@@ -134,7 +134,7 @@ impl PairingStore for CredentialPairingStore {
 
 /// The fixed credential target holding this user's whole pairing set.
 #[cfg(windows)]
-const PAIRING_SET_TARGET: &str = "ReFineID_RAPP_Pairing_Set";
+const PAIRING_SET_TARGET: &str = "RefineID_RAPP_Pairing_Set";
 
 #[cfg(windows)]
 fn target_name_wide() -> Vec<u16> {
@@ -176,7 +176,7 @@ fn fallback_pairing_paths() -> Vec<std::path::PathBuf> {
     if let Some(local_app_data) = std::env::var_os("LOCALAPPDATA") {
         paths.push(
             std::path::PathBuf::from(local_app_data)
-                .join("ReFineID")
+                .join("RefineID")
                 .join("pairing_set.blob"),
         );
     }
@@ -184,7 +184,7 @@ fn fallback_pairing_paths() -> Vec<std::path::PathBuf> {
         || std::path::PathBuf::from(r"C:\ProgramData"),
         std::path::PathBuf::from,
     );
-    paths.push(program_data.join("ReFineID").join("pairing_set.blob"));
+    paths.push(program_data.join("RefineID").join("pairing_set.blob"));
     paths
 }
 

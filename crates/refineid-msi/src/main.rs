@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-//! Builds the `ReFineID` Card Driver package.
+//! Builds the `RefineID` Card Driver package.
 //!
 //! The card registrations below are the whole reason the package exists:
 //! Windows reads them to decide which Card Module to load for an inserted
@@ -197,8 +197,8 @@ mod windows_main {
         }
 
         let package = Package {
-            product_name: "ReFineID Card Driver",
-            manufacturer: "ReFineID",
+            product_name: "RefineID Card Driver",
+            manufacturer: "RefineID",
             description: "Windows smart-card minidriver for FINEID cards",
             version,
             upgrade_code,

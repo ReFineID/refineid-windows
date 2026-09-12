@@ -18,7 +18,7 @@ use zeroize::Zeroizing;
 use crate::ids::{PairId, RendezvousToken};
 use crate::store::{PairingDisposition, PairingRecord};
 
-/// Format tag identifying a `ReFineID` pairing-record blob.
+/// Format tag identifying a `RefineID` pairing-record blob.
 const PAIRING_BLOB_MAGIC: &[u8] = b"RAPP-pair-record";
 
 /// Supported encoding revisions.

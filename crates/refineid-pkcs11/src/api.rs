@@ -272,9 +272,9 @@ unsafe extern "C" fn c_get_info(info: CkInfoPtr) -> CkRv {
     }
     let value = CkInfo {
         cryptoki_version: CRYPTOKI_VERSION,
-        manufacturer_id: padded_field("ReFineID"),
+        manufacturer_id: padded_field("RefineID"),
         flags: 0,
-        library_description: padded_field("ReFineID FINEID PKCS11"),
+        library_description: padded_field("RefineID FINEID PKCS11"),
         library_version: LIBRARY_VERSION,
     };
     // SAFETY: caller guarantees info is a writable CK_INFO pointer.
@@ -484,7 +484,7 @@ unsafe extern "C" fn c_get_token_info(slot_id: CkSlotId, info: CkTokenInfoPtr) -
 ///   Finnish  "Perus (PIN 1)"
 ///   Swedish  "Bas (PIN 1)"
 const TOKEN_LABEL_IDENTIFY: &str = "Basic (PIN 1)";
-const TOKEN_LABEL_REMOTE: &str = "ReFineID Remote (PIN 1)";
+const TOKEN_LABEL_REMOTE: &str = "RefineID Remote (PIN 1)";
 
 /// Build the token-info payload. Fixed-width fields are space-padded;
 /// unknown counters use [`CK_UNAVAILABLE_INFORMATION`].
@@ -493,7 +493,7 @@ const TOKEN_LABEL_REMOTE: &str = "ReFineID Remote (PIN 1)";
 /// `serial` comes from the card's own PKCS#15 EF.TokenInfo (the
 /// printed card identifier). The model is the fixed card family,
 /// FINEID (the openssl backend's default URI matches on it). The
-/// manufacturer names this software, `ReFineID`: `C_GetInfo`
+/// manufacturer names this software, `RefineID`: `C_GetInfo`
 /// carries the module identity in principle, but `p11-kit-proxy`
 /// masks it with its own, so the token manufacturer is the only
 /// producer hint that reaches proxy consumers.
@@ -526,7 +526,7 @@ fn token_info_value(serial: &str, pin1_status: PinStatus, is_remote: bool) -> Ck
     };
     CkTokenInfo {
         label,
-        manufacturer_id: padded_field("ReFineID"),
+        manufacturer_id: padded_field("RefineID"),
         model: padded_field("FINEID"),
         serial_number: tail_padded_field(serial),
         flags,

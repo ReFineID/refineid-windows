@@ -48,7 +48,7 @@ is remote.
 2. **Durable pairing** — next. A `PairingStore` implementation over the
    Windows credential store (pair keys device-only, never roaming, the
    revoked record kept as the tombstone), and the pairing ceremony in
-   ReFineID Settings: QR display, both-device grant confirmation, the
+   RefineID Settings: QR display, both-device grant confirmation, the
    paired-phones list, forget and revoke.
 3. **Minidriver remote arm** — the `CardSessionTransport::Remote`
    variant backed by the requester engine, certificate caching at

@@ -41,7 +41,7 @@ module (refineid_pkcs11.dll) to reach the card.
 ## Contactless NFC
 
 Contactless FINEID S4-1 v4.0 is implemented as an experimental path. The card
-presents a PC/SC contactless ATR and seals PKCS #15 behind PACE. ReFineID
+presents a PC/SC contactless ATR and seals PKCS #15 behind PACE. RefineID
 Settings first proves the CAN against the card and saves only that CAN in the
 current user's Windows Credential Manager, keyed by the complete ATR. The
 minidriver uses the stored CAN to establish secure messaging before certificate
@@ -87,7 +87,7 @@ available.
 ### Firefox handshake diagnosis
 
 `SSL_ERROR_HANDSHAKE_FAILURE_ALERT` is not necessarily a signing failure. Check
-the `ReFineID-Minidriver` Application events for the same attempt:
+the `RefineID-Minidriver` Application events for the same attempt:
 
 - `CardAuthenticateEx` followed by `CardSignData` means Firefox reached signing.
 - `CardAuthenticateEx` with no `CardSignData` means Firefox/NSS rejected the
