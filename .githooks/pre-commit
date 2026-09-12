@@ -1,5 +1,5 @@
 #!/bin/sh
-# ReFineID Windows commit gate.
+# RefineID Windows commit gate.
 #
 # Rejects a commit that would fail the CI quality gate in .github/workflows/ci.yml.
 # Enable it once per clone with:

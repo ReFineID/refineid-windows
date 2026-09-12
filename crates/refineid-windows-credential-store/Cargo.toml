@@ -1,6 +1,6 @@
 [package]
 name = "refineid-windows-credential-store"
-description = "Windows Credential Manager boundary for card-bound ReFineID NFC access numbers"
+description = "Windows Credential Manager boundary for card-bound RefineID NFC access numbers"
 version.workspace = true
 edition.workspace = true
 license.workspace = true

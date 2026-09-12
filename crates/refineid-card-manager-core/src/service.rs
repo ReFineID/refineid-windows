@@ -158,7 +158,7 @@ pub fn inspect_contactless(
         .map_err(|error| CardPinError::Transport(format!("contactless ATR failed: {error}")))?
         .to_wire_bytes();
 
-    // ReFineID-Apple deliberately attempts both proven SELECT MF variants
+    // RefineID-Apple deliberately attempts both proven SELECT MF variants
     // before PACE and still lets MSE:Set AT be the authority if a reader
     // rejects the plain selection.
     let _master_file_selection = transport.select_mf();
@@ -225,7 +225,7 @@ pub fn inspect_contactless(
             .map_err(|error| CardPinError::Pkcs15Select(format!("{error}")))?;
         let pin1 = transport.pin_status(PinSlot::Pin1).ok();
         let pin2 = transport.pin_status(PinSlot::Pin2).ok();
-        // Keep parity with ReFineID-Apple: PIN1 and PIN2 are safe probes,
+        // Keep parity with RefineID-Apple: PIN1 and PIN2 are safe probes,
         // but the PUK GET DATA query can answer 6988 over contactless and
         // make the next protected command fail with 6999.
         let puk = None;

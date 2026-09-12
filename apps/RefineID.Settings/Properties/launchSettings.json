@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "RefineID.Settings (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "RefineID.Settings (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

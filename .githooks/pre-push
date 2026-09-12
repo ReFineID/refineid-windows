@@ -1,5 +1,5 @@
 #!/bin/sh
-# ReFineID Windows push gate.
+# RefineID Windows push gate.
 #
 # Rejects a push if git dependencies in Cargo.lock are stale compared
 # to upstream refineid-core.

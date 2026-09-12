@@ -25,7 +25,7 @@ if (-not $principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administra
 }
 
 $destination = Join-Path $env:windir 'System32\refineid_minidriver.dll'
-$backupDirectory = Join-Path $env:ProgramData 'ReFineID\backup'
+$backupDirectory = Join-Path $env:ProgramData 'RefineID\backup'
 $backup = Join-Path $backupDirectory 'refineid_minidriver.dll'
 $registryKeys = @(
     'HKLM:\SOFTWARE\Microsoft\Cryptography\Calais\SmartCards\FINEID-S4-1-v3.1',
@@ -33,7 +33,7 @@ $registryKeys = @(
     'HKLM:\SOFTWARE\Microsoft\Cryptography\Calais\SmartCards\FINEID-S4-1-v4.0-contactless'
 )
 
-if (-not $PSCmdlet.ShouldProcess('ReFineID development minidriver', 'Uninstall')) {
+if (-not $PSCmdlet.ShouldProcess('RefineID development minidriver', 'Uninstall')) {
     return
 }
 
@@ -65,4 +65,4 @@ try {
     }
 }
 
-Write-Host 'ReFineID development minidriver removed.'
+Write-Host 'RefineID development minidriver removed.'

@@ -15,7 +15,7 @@ architectures:
 ```text
                ┌────────────────────────────────────────────────────────┐
                │                  Paired Smartphone                     │
-               │               (ReFineID App / RAPP)                    │
+               │               (RefineID App / RAPP)                    │
                └───────────────────────────┬────────────────────────────┘
                                            │ (Wi-Fi / BLE TCP Stream)
                                            ▼
@@ -124,7 +124,7 @@ assigns the generic null driver `scunknown.inf`, rendering the card as
 
 ### The Solution: PnP Branding via SetupAPI and INF
 1. **Runtime PnP Branding (Immediate & Driver-Free)**:
-   The ReFineID service enumerates `SmartCard` devnodes (`{990A2BD7-E738-46C7-B26F-1CF8FB9F1391}`)
+   The RefineID service enumerates `SmartCard` devnodes (`{990A2BD7-E738-46C7-B26F-1CF8FB9F1391}`)
    and applies SetupAPI properties:
    - `SPDRP_FRIENDLYNAME` (0x0000000C) → `"FINEID Identity Card"`
    - `SPDRP_DEVICEDESC` (0x00000000) → `"FINEID Identity Card"`
@@ -151,12 +151,12 @@ assigns the generic null driver `scunknown.inf`, rendering the card as
      {
        "policies": {
          "SecurityDevices": {
-           "ReFineID": "C:\\Windows\\System32\\refineid_pkcs11.dll"
+           "RefineID": "C:\\Windows\\System32\\refineid_pkcs11.dll"
          }
        }
      }
      ```
-   - Or standard registry: `HKLM\SOFTWARE\Mozilla\PKCS11Modules\ReFineID`.
+   - Or standard registry: `HKLM\SOFTWARE\Mozilla\PKCS11Modules\RefineID`.
 
 ---
 
@@ -189,7 +189,7 @@ the CryptoAPI/CNG smart card subsystem. When accessing mutual-TLS sites (such as
 ## 7. Windows Installer (MSI) Packaging
 
 Packaging is implemented natively in Rust via `crates/refineid-msi`:
-- Generates standalone architecture-specific MSIs (`ReFineID.CardDriver-<version>-<arch>.msi`)
+- Generates standalone architecture-specific MSIs (`RefineID.CardDriver-<version>-<arch>.msi`)
   using the Windows Installer Win32 API and `makecab.exe` without third-party dependencies.
 - Installs `refineid_minidriver.dll` to `C:\Windows\System32`.
 - Registers all four FINEID card identities in `Calais\SmartCards`:
@@ -201,9 +201,9 @@ Packaging is implemented natively in Rust via `crates/refineid-msi`:
 
 ---
 
-## 8. ReFineID WinUI 3 Desktop App
+## 8. RefineID WinUI 3 Desktop App
 
-The Windows desktop application (`apps/ReFineID`) is built with modern WinUI 3 and
+The Windows desktop application (`apps/RefineID`) is built with modern WinUI 3 and
 Windows App SDK:
 - Fluent Design with Mica backdrop and system styling.
 - Card verification, pairing management, and local firewall service registration.

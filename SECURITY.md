@@ -1,6 +1,6 @@
 # Security
 
-ReFineID for Windows is beta software handling identity-card credentials.
+RefineID for Windows is beta software handling identity-card credentials.
 
 ## Reporting
 

@@ -884,7 +884,7 @@ unsafe fn cache_delete_tag(cd: &CARD_DATA, tag: &str) -> DWORD {
 //
 // The minidriver runs inside SCardSvr -- no console, no stdout, no
 // flat-file fallback. Production diagnostics go to the Windows Event
-// Log (Application channel, source "ReFineID-Minidriver"), visible in
+// Log (Application channel, source "RefineID-Minidriver"), visible in
 // Event Viewer. The `advapi32` Event Log API is hand-rolled here, the
 // same way `transport.rs` hand-rolls the `winscard` API, so the crate
 // adds no `windows-sys` dependency.
@@ -915,7 +915,7 @@ const EVENTLOG_ERROR_TYPE: u16 = 0x0001;
 const EVENTLOG_WARNING_TYPE: u16 = 0x0002;
 const EVENTLOG_INFORMATION_TYPE: u16 = 0x0004;
 
-/// `"ReFineID-Minidriver\0"` as a NUL-terminated UTF-16 source name
+/// `"RefineID-Minidriver\0"` as a NUL-terminated UTF-16 source name
 /// for `RegisterEventSourceW`.
 const EVENT_SOURCE_NAME: &[u16] = &[
     'R' as u16, 'e' as u16, 'F' as u16, 'i' as u16, 'n' as u16, 'e' as u16, 'I' as u16, 'D' as u16,
@@ -993,7 +993,7 @@ impl Log {
     }
 
     /// Alpha-stage trace: every callback entry / branch / return code
-    /// is reported at Info against the `ReFineID-Minidriver` source
+    /// is reported at Info against the `RefineID-Minidriver` source
     /// (golden rule #2 -- Event Log is the only diagnostic channel
     /// inside `SCardSvr`). Unconditional during alpha; level gating
     /// returns with the manifested ETW provider post-alpha.

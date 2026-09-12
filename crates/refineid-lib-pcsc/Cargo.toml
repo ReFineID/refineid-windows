@@ -1,6 +1,6 @@
 [package]
 name = "refineid-lib-pcsc"
-description = "PC/SC transport adapter for the ReFineID Rust core"
+description = "PC/SC transport adapter for the RefineID Rust core"
 version.workspace = true
 edition.workspace = true
 license.workspace = true

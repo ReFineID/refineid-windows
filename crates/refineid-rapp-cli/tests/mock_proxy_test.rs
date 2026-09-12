@@ -100,7 +100,7 @@ fn test_mock_proxy_pairing_and_card_operations() {
             &requested_profiles,
             transport,
             |peer, requested| {
-                assert_eq!(peer.display_name, "ReFineID Mock Phone");
+                assert_eq!(peer.display_name, "RefineID Mock Phone");
                 assert_eq!(peer.platform, "iOS");
                 Some(requested.to_vec())
             },

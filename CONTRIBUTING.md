@@ -1,6 +1,6 @@
 # Contributing
 
-ReFineID is security-sensitive identity middleware. Small, reviewable changes
+RefineID is security-sensitive identity middleware. Small, reviewable changes
 with evidence are preferred.
 
 Before submitting:

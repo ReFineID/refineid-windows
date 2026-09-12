@@ -1,6 +1,6 @@
 # Windows Accessibility and UI Automation (UIA) for AI Agents and Users
 
-This document outlines the accessibility and UI automation architecture of ReFineID on Windows. It explains how Windows Accessibility standards and the UI Automation (UIA) framework serve a dual purpose: providing assistive technology for human users (e.g. screen readers like Windows Narrator) and providing deterministic, semantic assistive technology for autonomous AI agents.
+This document outlines the accessibility and UI automation architecture of RefineID on Windows. It explains how Windows Accessibility standards and the UI Automation (UIA) framework serve a dual purpose: providing assistive technology for human users (e.g. screen readers like Windows Narrator) and providing deterministic, semantic assistive technology for autonomous AI agents.
 
 ---
 
@@ -23,7 +23,7 @@ Windows UI Automation (`IUIAutomation` in Win32, `System.Windows.Automation` in 
                                     │
                   ┌─────────────────┴─────────────────┐
                   ▼                                   ▼
-         Browser Window (Firefox)           ReFineID WinUI 3 Window
+         Browser Window (Firefox)           RefineID WinUI 3 Window
                   │                                   │
        ┌──────────┴──────────┐             ┌──────────┴──────────┐
        ▼                     ▼             ▼                     ▼
@@ -46,7 +46,7 @@ Windows UI Automation (`IUIAutomation` in Win32, `System.Windows.Automation` in 
 
 ## 3. WinUI 3 Accessibility Implementation
 
-All user-facing XAML views in ReFineID (`apps/ReFineID` and `apps/ReFineID.Settings`) implement comprehensive UIA attributes:
+All user-facing XAML views in RefineID (`apps/RefineID` and `apps/RefineID.Settings`) implement comprehensive UIA attributes:
 
 ### A. Semantic Heading Structure
 Headings guide screen reader users and AI agents through logical document hierarchy:

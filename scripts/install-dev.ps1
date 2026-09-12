@@ -117,11 +117,11 @@ if ($signature.Status -ne 'Valid' -and -not $AllowUnsigned) {
 }
 
 $destination = Join-Path $env:windir 'System32\refineid_minidriver.dll'
-$backupDirectory = Join-Path $env:ProgramData 'ReFineID\backup'
+$backupDirectory = Join-Path $env:ProgramData 'RefineID\backup'
 $backup = Join-Path $backupDirectory 'refineid_minidriver.dll'
 $services = @('CertPropSvc', 'SCardSvr')
 
-if (-not $PSCmdlet.ShouldProcess($destination, 'Install ReFineID development minidriver')) {
+if (-not $PSCmdlet.ShouldProcess($destination, 'Install RefineID development minidriver')) {
     return
 }
 

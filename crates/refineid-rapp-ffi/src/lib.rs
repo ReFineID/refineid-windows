@@ -12,7 +12,7 @@
 // implied. See the License for the specific language governing
 // permissions and limitations under the License.
 
-//! Narrow C ABI for the `ReFineID` Windows remote-card UI.
+//! Narrow C ABI for the `RefineID` Windows remote-card UI.
 //!
 //! Raw pointers end in this crate. Listen addresses, advertised endpoints,
 //! and display names are copied into owned Rust strings before use. The
@@ -426,7 +426,7 @@ fn begin_pairing(
             ApiFailure::new(
                 "listen_failed",
                 "Could not open the network port to wait for the phone. \
-                 Another ReFineID window may already be waiting for a connection; \
+                 Another RefineID window may already be waiting for a connection; \
                  close it and try again.",
             )
         })?;

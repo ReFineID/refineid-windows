@@ -62,7 +62,7 @@ if (-not $certificateCases) {
     throw "No $Role FINEID card certificate with a private key was found."
 }
 
-$data = [Text.Encoding]::UTF8.GetBytes('ReFineID sign test payload')
+$data = [Text.Encoding]::UTF8.GetBytes('RefineID sign test payload')
 
 function Test-BytesEqual([byte[]]$Left, [byte[]]$Right) {
     if ($null -eq $Left -or $null -eq $Right -or $Left.Length -ne $Right.Length) {
